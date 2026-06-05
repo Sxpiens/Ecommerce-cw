@@ -1,0 +1,31 @@
+import {Link} from "react-router-dom";
+
+function Navbar(){
+    return (
+        <nav className='bg-pink-400 flex justify-between p-4 text-white items-center'>
+            <div className="flex items-center">
+                <Link to="/" className="cursor-pointer">
+                    <img
+                        src="/logo.png"
+                        alt="Logo Dulce Momento"
+                        className="h-11 w-auto object-contain hover:scale-105 transition-transform"
+                    />
+                </Link>
+            </div>
+
+            <div className='flex items-center gap-4 font-serif italic text-l'>
+                    <Link to="/" className="hover:text-red-700 transition-colors">Inicio</Link>
+                        <span className="text-red-200">|</span>
+                    <Link to="/carrito" className="hover:text-red-700 transition-colors">Carrito</Link>
+                        <span className="text-red-200">|</span>
+                    <Link to="/catalogo" className="hover:text-red-700 transition-colors">Catálogo</Link>
+                        <span className="text-red-200">|</span>
+                    <Link to="/login" className="hover:text-red-700 transition-colors">Login</Link>
+                        <span className="text-red-200">|</span>
+                    <Link to="/registro" className="hover:text-red-700 transition-colors">Registro</Link>
+                </div>
+        </nav>
+    )
+}
+
+export default Navbar;
