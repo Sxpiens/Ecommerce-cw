@@ -38,6 +38,7 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("No encontrado"));
         // Convertimos de Entidad a DTO
         UsuarioDTO dto = new UsuarioDTO();
+        dto.setId(usuario.getId());
         dto.setNombre(usuario.getNombre());
         dto.setCorreo(usuario.getCorreo());
 

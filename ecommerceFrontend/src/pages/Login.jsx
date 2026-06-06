@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from "../config/api.js";
+import {UsuarioContext} from '../context/UsuarioContext';
 
 function Login() {
 
+    const {login} = useContext(UsuarioContext);
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -22,6 +24,8 @@ function Login() {
             });
 
             if (response.ok) {
+                const usuarioData = await response.json();
+                login(usuarioData)
                 navigate("/catalogo");
             }else{
                 setMensajeError("Usuario/contraseña incorrecta o no Registrado");

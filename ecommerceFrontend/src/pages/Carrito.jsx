@@ -1,10 +1,38 @@
 import {CarritoContext} from '../context/CarritoContext';
 import React, {useContext} from "react";
+import {UsuarioContext} from '../context/UsuarioContext';
+import {API_URL} from "../config/api.js";
+import {useNavigate} from "react-router-dom";
 
 function Carrito() {
-    const {carrito, eliminarProducto, disminuirProducto, agregarAlCarrito}  = useContext(CarritoContext);
-
+    const {carrito, eliminarProducto, disminuirProducto, agregarAlCarrito, limpiarCarrito}  = useContext(CarritoContext);
+    const navigate = useNavigate();
+    const {usuario} = useContext(UsuarioContext);
     const total = carrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+
+    const realizarPedido = async () =>{
+        try{
+            const response = await fetch(`${API_URL}/api/pedidos?usuarioID=${usuario.id}`, {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    items: carrito.map(producto => ({
+                        producto: { id: producto.id },
+                        cantidad: producto.cantidad
+                    }))
+                }),
+                });
+
+            if (response.ok){
+                limpiarCarrito();
+
+                alert("Pedido realizado!");
+                navigate("/catalogo");
+            }
+        } catch(error){
+            console.log("Error al procesar su pedido",error);
+        }
+    }
 
     if (carrito.length === 0) {
         return (
@@ -65,8 +93,8 @@ function Carrito() {
                             </button>
 
                             <span className="font-mono font-bold text-slate-700 w-6 text-center">
-              {producto.cantidad}
-            </span>
+                              {producto.cantidad}
+                            </span>
 
                             <button
                                 className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm text-pink-500 font-bold hover:bg-pink-50 cursor-pointer transition-colors"
@@ -97,7 +125,7 @@ function Carrito() {
                 </p>
 
                 <button
-                    onClick={() => alert("Pedido realizado")}
+                    onClick={() => realizarPedido()}
                     className="w-full md:w-auto px-10 py-3 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-700 cursor-pointer transition-all shadow-md active:scale-95"
                 >
                     Realizar pedido

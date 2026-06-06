@@ -38,8 +38,12 @@ export function CarritoProvider({ children }) {
         }
     };
 
+    const limpiarCarrito = () => {
+        setCarrito([]);
+    }
+
     return (
-        <CarritoContext.Provider value={{ carrito, agregarAlCarrito, eliminarProducto, disminuirProducto }}>
+        <CarritoContext.Provider value={{ carrito, agregarAlCarrito, eliminarProducto, disminuirProducto, limpiarCarrito }}>
             {children}
         </CarritoContext.Provider>
     );
