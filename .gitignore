@@ -1,3 +1,2 @@
-# Crear el .gitignore raíz
-echo "Ecommerce.zip" > .gitignore
-echo "*.zip" >> .gitignore
+Ecommerce.zip
+*.zip
