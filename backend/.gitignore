@@ -1,7 +1,3 @@
-### Credenciales - NO subir ###
-src/main/resources/application.properties
-src/main/resources/application-*.properties
-
 ### Logs ###
 *.log
 logs/
