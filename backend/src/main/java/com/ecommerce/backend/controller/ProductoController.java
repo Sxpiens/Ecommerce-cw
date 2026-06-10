@@ -41,5 +41,15 @@ public class ProductoController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizarProducto(@PathVariable Long id, @RequestBody Producto producto){
+        try {
+            Producto actualizado = productoService.actualizar(id, producto);
+            return ResponseEntity.ok(actualizado);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
+    }
+
 
 }

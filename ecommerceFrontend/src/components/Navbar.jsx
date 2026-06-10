@@ -7,7 +7,7 @@ function Navbar() {
     const navigate = useNavigate();
 
     return (
-        <nav className='bg-pink-400 flex justify-between p-4 text-white items-center'>
+        <nav className='bg-sky-400 flex justify-between p-4 text-white items-center'>
             <div className="flex items-center">
                 <Link to="/" className="cursor-pointer">
                     <img

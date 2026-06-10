@@ -12,7 +12,7 @@ function Inicio() {
                 <div className="w-24 h-1 bg-pink-400 mx-auto mb-8 rounded-full"></div>
 
                 <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-6">
-                    En <span className="font-semibold text-pink-500">PANochon</span>, entendemos que un regalo es mucho más que un objeto. Es una forma de decir "estoy pensando en ti". Nuestra inspiración surge de la autenticidad de esos momentos, creando piezas que capturan la esencia de quien regala y de quien recibe.
+                    En <span className="font-semibold text-pink-500">SweetBox</span>, entendemos que un regalo es mucho más que un objeto. Es una forma de decir "estoy pensando en ti". Nuestra inspiración surge de la autenticidad de esos momentos, creando piezas que capturan la esencia de quien regala y de quien recibe.
                 </p>
 
                 <p className="text-lg text-slate-600 leading-relaxed italic mb-10">
