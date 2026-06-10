@@ -11,6 +11,10 @@ function Carrito() {
     const total = carrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
 
     const realizarPedido = async () =>{
+        if (!usuario) {
+            navigate("/login");
+            return;
+        }
         try{
             const response = await fetch(`${API_URL}/api/pedidos?usuarioID=${usuario.id}`, {
                 method: 'POST',
@@ -123,6 +127,12 @@ function Carrito() {
                 <p className="text-2xl font-bold text-slate-800 mb-4">
                     Total: <span className="text-pink-500">S/ {total.toFixed(2)}</span>
                 </p>
+
+                {!usuario && (
+                    <p className="text-sm text-slate-500 italic mb-2">
+                        Debes iniciar sesión para realizar tu pedido
+                    </p>
+                )}
 
                 <button
                     onClick={() => realizarPedido()}
